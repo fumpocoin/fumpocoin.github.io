@@ -146,6 +146,10 @@
   .swap { max-width: 440px; margin: 0 auto; }
   #jupiter-plugin { min-height: 450px; border: 1px solid var(--line); border-radius: 18px; overflow: hidden; background: var(--panel); }
   .swap-note { color: var(--muted); font-size: 14px; text-align: center; margin: 12px auto 0; max-width: 46ch; }
+  .play { display: grid; grid-template-columns: 1.3fr 1fr; gap: 18px; align-items: center; background: var(--panel); border: 1px solid var(--lime); border-radius: 18px; padding: 18px; }
+  .play img { width: 100%; border-radius: 12px; display: block; aspect-ratio: 3 / 1; object-fit: cover; }
+  .play h3 { margin: 0 0 6px; font-size: 24px; font-weight: 900; }
+  .play p { margin: 0 0 14px; color: var(--muted); }
   .members { color: var(--muted); font-size: 14px; margin: 12px 0 0; min-height: 1.6em; }
 
   @media (max-width: 760px) { .stats { grid-template-columns: repeat(2, 1fr); } }
@@ -155,6 +159,7 @@
     .chart iframe { height: 440px; }
     .kit { grid-template-columns: 1fr; }
     .phases { grid-template-columns: 1fr; }
+    .play { grid-template-columns: 1fr; }
     .ca-row { flex-direction: column; align-items: stretch; }
     .btn { flex: 1 1 100%; text-align: center; }
   }
@@ -178,6 +183,7 @@
 
     <div class="cta">
       <a class="btn primary" href="#swap">Swap here</a>
+      <a class="btn" href="game.html">Play Moon Run</a>
       <a class="btn" href="https://pump.fun/coin/2ftHKA9A4hcsctZLPDk1qGL7VFqvdHzFUD5pnxvrpump" target="_blank" rel="noopener">pump.fun</a>
       <a class="btn" href="https://dexscreener.com/solana/2ftHKA9A4hcsctZLPDk1qGL7VFqvdHzFUD5pnxvrpump" target="_blank" rel="noopener">Chart</a>
       <a class="btn" href="https://t.me/fumpo_coin" target="_blank" rel="noopener">Telegram</a>
@@ -217,6 +223,18 @@
     <p><b>What it is not:</b> an investment product, a company, or a promise of profit. There are no guarantees and no utility you need to wait for. If the purple monster makes you laugh, you already got the product.</p>
   </section>
 
+  <section id="play">
+    <h2>Play</h2>
+    <div class="play">
+      <img src="banner.jpg" alt="FUMPO relaxing on the moon" loading="lazy">
+      <div>
+        <h3>FUMPO Moon Run</h3>
+        <p>Run across the moon, grab coins, dodge rocks and rockets. Free, right in your browser.</p>
+        <a class="btn primary" href="game.html">Play now</a>
+      </div>
+    </div>
+  </section>
+
   <section id="roadmap">
     <h2>Roadmap</h2>
     <ol class="phases">
@@ -244,7 +262,7 @@
           <li>Feed FUMPO mini game in Telegram</li>
           <li>Levels, streaks and a weekly leaderboard</li>
           <li class="todo">Ask FUMPO: the monster answers questions</li>
-          <li class="todo">A full arcade game</li>
+          <li>Moon Run arcade game on the website</li>
         </ul>
       </li>
       <li>
