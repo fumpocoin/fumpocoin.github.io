@@ -3,13 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FUMPO | The purple monster of Solana</title>
+<title>FUMPO | The purple meme coin on Solana</title>
 <meta name="description" content="FUMPO is a community memecoin on Solana. Contract address, chart, how to buy and the official Telegram.">
-<meta property="og:title" content="FUMPO | The purple monster of Solana">
+<meta property="og:title" content="FUMPO | The purple meme coin on Solana">
 <meta property="og:description" content="Community memecoin on Solana. Official contract, chart and Telegram.">
-<meta property="og:image" content="https://fumpocoin.xyz/logo.png">
+<meta property="og:image" content="https://fumpocoin.xyz/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:type" content="website">
 <meta property="og:url" content="https://fumpocoin.xyz/">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@FumpoCoin">
+<meta name="twitter:image" content="https://fumpocoin.xyz/og.jpg">
 <link rel="icon" href="logo.png">
 <style>
   :root {
@@ -36,9 +41,14 @@
   a { color: var(--lime); }
   .wrap { max-width: 880px; margin: 0 auto; padding: 0 16px; }
 
-  header { text-align: center; padding: 56px 0 40px; }
+  header { text-align: center; padding: 16px 0 40px; }
+  .banner {
+    display: block; width: 100%; height: auto; aspect-ratio: 3 / 1; object-fit: cover;
+    border-radius: 22px; border: 1px solid var(--line);
+  }
   .logo {
-    width: 168px; height: 168px; border-radius: 50%;
+    position: relative; margin-top: -72px;
+    width: 144px; height: 144px; border-radius: 50%;
     border: 4px solid var(--lime);
     box-shadow: 0 0 0 8px rgba(182, 255, 60, .12), 0 20px 60px rgba(162, 75, 255, .45);
   }
@@ -73,7 +83,7 @@
   .btn.primary { background: var(--purple); color: #fff; }
   .btn:hover { filter: brightness(1.12); }
 
-  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 36px 0 0; }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 36px 0 0; }
   .stat { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 16px; text-align: center; }
   .stat b { display: block; font-size: 22px; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
   .stat span { color: var(--muted); font-size: 13px; text-transform: uppercase; letter-spacing: .08em; }
@@ -99,8 +109,29 @@
 
   footer { margin-top: 56px; padding: 24px 0 40px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; text-align: center; }
 
+  .chart { border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: var(--panel); }
+  .chart iframe { display: block; width: 100%; height: 520px; border: 0; }
+  .prose p { color: var(--muted); margin: 0 0 12px; max-width: 62ch; }
+  .prose b { color: var(--text); }
+  details { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; margin-bottom: 10px; }
+  summary { cursor: pointer; padding: 14px 16px; font-weight: 800; list-style: none; display: flex; justify-content: space-between; gap: 12px; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; color: var(--lime); font-weight: 900; }
+  details[open] summary::after { content: "\2212"; }
+  details p { margin: 0; padding: 0 16px 16px; color: var(--muted); overflow-wrap: anywhere; }
+  .kit { display: grid; grid-template-columns: 1fr 2fr; gap: 12px; }
+  .kit figure { margin: 0; background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 12px; display: flex; flex-direction: column; gap: 10px; }
+  .kit img { width: 100%; height: 150px; object-fit: cover; border-radius: 10px; }
+  .kit figcaption { display: flex; justify-content: space-between; align-items: center; gap: 8px; color: var(--muted); font-size: 14px; margin-top: auto; }
+  .kit a { font-weight: 800; text-decoration: none; }
+  .members { color: var(--muted); font-size: 14px; margin: 12px 0 0; min-height: 1.6em; }
+
+  @media (max-width: 760px) { .stats { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 560px) {
-    .stats { grid-template-columns: 1fr; }
+    .banner { border-radius: 14px; }
+    .logo { width: 96px; height: 96px; margin-top: -24px; }
+    .chart iframe { height: 440px; }
+    .kit { grid-template-columns: 1fr; }
     .ca-row { flex-direction: column; align-items: stretch; }
     .btn { flex: 1 1 100%; text-align: center; }
   }
@@ -109,9 +140,10 @@
 <body>
 <div class="wrap">
   <header>
-    <img class="logo" src="logo.png" alt="FUMPO logo: a purple monster holding a coin" width="168" height="168">
+    <img class="banner" src="banner.jpg" alt="FUMPO, the purple meme coin on Solana: a purple monster relaxing on the moon" width="1500" height="500">
+    <img class="logo" src="logo.png" alt="FUMPO mascot: a purple furry monster with sunglasses and a gold chain" width="144" height="144">
     <h1>$FUMPO</h1>
-    <p class="tag">The purple monster of Solana. A community memecoin, made for fun.</p>
+    <p class="tag">The purple meme coin on Solana. Zero brain cells, pure meme energy.</p>
 
     <div class="ca">
       <small>Official contract (Solana)</small>
@@ -127,14 +159,30 @@
       <a class="btn" href="https://t.me/fumpo_coin" target="_blank" rel="noopener">Telegram</a>
       <a class="btn" href="https://x.com/FumpoCoin" target="_blank" rel="noopener">X / Twitter</a>
     </div>
+    <p class="members" id="members"></p>
 
     <div class="stats" aria-live="polite">
       <div class="stat"><b id="price">...</b><span>Price</span></div>
       <div class="stat"><b id="mcap">...</b><span>Market cap</span></div>
       <div class="stat"><b id="vol">...</b><span>24h volume</span></div>
+      <div class="stat"><b id="trades">...</b><span>24h trades</span></div>
     </div>
     <p class="src">Live data from DexScreener</p>
   </header>
+
+  <section id="chart">
+    <h2>Live chart</h2>
+    <div class="chart">
+      <iframe title="FUMPO live price chart on DexScreener" loading="lazy"
+        src="https://dexscreener.com/solana/2ftHKA9A4hcsctZLPDk1qGL7VFqvdHzFUD5pnxvrpump?embed=1&theme=dark&trades=0&info=0"></iframe>
+    </div>
+  </section>
+
+  <section id="about" class="prose">
+    <h2>About FUMPO</h2>
+    <p><b>FUMPO is a meme coin.</b> It was launched on pump.fun on Solana, with the standard pump.fun supply of 1 billion tokens and no presale. It exists for the memes and the community around them.</p>
+    <p><b>What it is not:</b> an investment product, a company, or a promise of profit. There is no roadmap that guarantees anything and no utility you need to wait for. If the purple monster makes you laugh, you already got the product.</p>
+  </section>
 
   <section id="how">
     <h2>How to buy</h2>
@@ -155,6 +203,29 @@
         <li>Use only the contract address shown on this page and by the bot in the official Telegram.</li>
         <li>Anyone offering "support", "listings" or "volume" in private messages is a scammer.</li>
       </ul>
+    </div>
+  </section>
+
+  <section id="faq">
+    <h2>FAQ</h2>
+    <details><summary>Where can I buy FUMPO?</summary><p>On pump.fun, using the contract address at the top of this page. Always paste the address yourself instead of searching by name, because copycat tokens use the same name.</p></details>
+    <details><summary>What is the official contract address?</summary><p>2ftHKA9A4hcsctZLPDk1qGL7VFqvdHzFUD5pnxvrpump on Solana. The same address is posted by the bot in the official Telegram with the /ca command.</p></details>
+    <details><summary>Will the price go up?</summary><p>Nobody knows. Meme coins are extremely volatile and most of them lose value. Only put in money you are fully prepared to lose.</p></details>
+    <details><summary>Someone from the team messaged me. Is it real?</summary><p>No. The team never sends the first message, never asks for your seed phrase and never sells listings, marketing or volume in private. Block and report the account.</p></details>
+    <details><summary>Where is the community?</summary><p>In the official Telegram group and on X at @FumpoCoin. Both are linked at the top of this page.</p></details>
+  </section>
+
+  <section id="media">
+    <h2>Media kit</h2>
+    <div class="kit">
+      <figure>
+        <img src="logo.png" alt="FUMPO mascot avatar" loading="lazy">
+        <figcaption><span>Avatar, 400 x 400</span><a href="logo.png" download="fumpo-avatar.png">Download</a></figcaption>
+      </figure>
+      <figure>
+        <img src="banner.jpg" alt="FUMPO banner" loading="lazy">
+        <figcaption><span>Banner, 1500 x 500</span><a href="banner.jpg" download="fumpo-banner.jpg">Download</a></figcaption>
+      </figure>
     </div>
   </section>
 
@@ -193,12 +264,19 @@
       set("price", price(Number(p.priceUsd || 0)));
       set("mcap", usd(Number(p.marketCap || p.fdv || 0)));
       set("vol", usd(Number((p.volume || {}).h24 || 0)));
+      const t = (p.txns || {}).h24 || {};
+      set("trades", String((t.buys || 0) + (t.sells || 0)));
     } catch {
-      ["price", "mcap", "vol"].forEach((id) => set(id, "n/a"));
+      ["price", "mcap", "vol", "trades"].forEach((id) => set(id, "n/a"));
     }
   }
   load();
   setInterval(load, 30000);
+
+  fetch("members.json", { cache: "no-store" })
+    .then((r) => r.json())
+    .then((d) => { if (d.members > 0) set("members", d.members.toLocaleString("en") + " members in the Telegram community"); })
+    .catch(() => {});
 </script>
 </body>
 </html>
