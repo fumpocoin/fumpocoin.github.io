@@ -138,6 +138,9 @@
   .miles h3 { margin: 0 0 10px; font-size: 18px; font-weight: 900; }
   .miles ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
   .miles li { border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; color: var(--text); font-size: 15px; }
+  .swap { max-width: 440px; margin: 0 auto; }
+  #jupiter-plugin { min-height: 450px; border: 1px solid var(--line); border-radius: 18px; overflow: hidden; background: var(--panel); }
+  .swap-note { color: var(--muted); font-size: 14px; text-align: center; margin: 12px auto 0; max-width: 46ch; }
   .members { color: var(--muted); font-size: 14px; margin: 12px 0 0; min-height: 1.6em; }
 
   @media (max-width: 760px) { .stats { grid-template-columns: repeat(2, 1fr); } }
@@ -169,7 +172,8 @@
     </div>
 
     <div class="cta">
-      <a class="btn primary" href="https://pump.fun/coin/2ftHKA9A4hcsctZLPDk1qGL7VFqvdHzFUD5pnxvrpump" target="_blank" rel="noopener">Buy on pump.fun</a>
+      <a class="btn primary" href="#swap">Swap here</a>
+      <a class="btn" href="https://pump.fun/coin/2ftHKA9A4hcsctZLPDk1qGL7VFqvdHzFUD5pnxvrpump" target="_blank" rel="noopener">pump.fun</a>
       <a class="btn" href="https://dexscreener.com/solana/2ftHKA9A4hcsctZLPDk1qGL7VFqvdHzFUD5pnxvrpump" target="_blank" rel="noopener">Chart</a>
       <a class="btn" href="https://t.me/fumpo_coin" target="_blank" rel="noopener">Telegram</a>
       <a class="btn" href="https://x.com/FumpoCoin" target="_blank" rel="noopener">X / Twitter</a>
@@ -184,6 +188,15 @@
     </div>
     <p class="src">Live data from DexScreener</p>
   </header>
+
+  <section id="swap">
+    <h2>Swap SOL for FUMPO</h2>
+    <div class="swap">
+      <div id="jupiter-plugin"></div>
+    </div>
+    <p class="swap-note">Powered by Jupiter. Your wallet connects to Jupiter directly and you approve every swap yourself. This site never sees your keys and adds no fee.</p>
+    <p class="swap-note" id="swap-fallback" hidden>The swap box could not load. You can <a href="https://jup.ag/swap/SOL-2ftHKA9A4hcsctZLPDk1qGL7VFqvdHzFUD5pnxvrpump" target="_blank" rel="noopener">swap on Jupiter</a> or buy on pump.fun instead.</p>
+  </section>
 
   <section id="chart" hidden>
     <h2>Live chart</h2>
@@ -288,6 +301,7 @@
   </footer>
 </div>
 
+<script src="https://plugin.jup.ag/plugin-v1.js" data-preload defer></script>
 <script>
   const CA = "2ftHKA9A4hcsctZLPDk1qGL7VFqvdHzFUD5pnxvrpump";
   const copyBtn = document.getElementById("copy");
@@ -337,6 +351,26 @@
   }
   load();
   setInterval(load, 30000);
+
+  window.addEventListener("load", () => {
+    if (!window.Jupiter) {
+      document.getElementById("swap-fallback").hidden = false;
+      document.querySelector("#swap .swap").hidden = true;
+      return;
+    }
+    window.Jupiter.init({
+      displayMode: "integrated",
+      integratedTargetId: "jupiter-plugin",
+      containerStyles: { height: "450px" },
+      formProps: {
+        initialInputMint: "So11111111111111111111111111111111111111112",
+        initialOutputMint: CA,
+        fixedMint: CA,
+        swapMode: "ExactIn",
+      },
+      branding: { name: "FUMPO", logoUri: "https://fumpocoin.xyz/logo.png" },
+    });
+  });
 
   fetch("members.json", { cache: "no-store" })
     .then((r) => r.json())
