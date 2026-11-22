@@ -170,11 +170,11 @@
     <p class="src">Live data from DexScreener</p>
   </header>
 
-  <section id="chart">
+  <section id="chart" hidden>
     <h2>Live chart</h2>
     <div class="chart">
       <iframe title="FUMPO live price chart on DexScreener" loading="lazy"
-        src="https://dexscreener.com/solana/2ftHKA9A4hcsctZLPDk1qGL7VFqvdHzFUD5pnxvrpump?embed=1&theme=dark&trades=0&info=0"></iframe>
+        data-src="https://dexscreener.com/solana/2ftHKA9A4hcsctZLPDk1qGL7VFqvdHzFUD5pnxvrpump?embed=1&theme=dark&trades=0&info=0"></iframe>
     </div>
   </section>
 
@@ -255,6 +255,16 @@
   const price = (x) => x < 0.01 ? "$" + x.toFixed(10).replace(/0+$/, "") : "$" + x.toFixed(4);
   const set = (id, v) => (document.getElementById(id).textContent = v);
 
+  // The chart looks empty with only a few candles, so it appears once there is real activity.
+  const CHART_MIN_TRADES = 50;
+  function showChart(trades) {
+    const sec = document.getElementById("chart");
+    if (trades < CHART_MIN_TRADES || !sec.hidden) return;
+    const frame = sec.querySelector("iframe");
+    frame.src = frame.dataset.src;
+    sec.hidden = false;
+  }
+
   async function load() {
     try {
       const r = await fetch("https://api.dexscreener.com/latest/dex/tokens/" + CA);
@@ -265,7 +275,9 @@
       set("mcap", usd(Number(p.marketCap || p.fdv || 0)));
       set("vol", usd(Number((p.volume || {}).h24 || 0)));
       const t = (p.txns || {}).h24 || {};
-      set("trades", String((t.buys || 0) + (t.sells || 0)));
+      const trades = (t.buys || 0) + (t.sells || 0);
+      set("trades", String(trades));
+      showChart(trades);
     } catch {
       ["price", "mcap", "vol", "trades"].forEach((id) => set(id, "n/a"));
     }
