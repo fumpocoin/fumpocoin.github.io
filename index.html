@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FUMPO | The purple monster of Solana</title>
+<meta name="description" content="FUMPO is a community memecoin on Solana. Contract address, chart, how to buy and the official Telegram.">
+<meta property="og:title" content="FUMPO | The purple monster of Solana">
+<meta property="og:description" content="Community memecoin on Solana. Official contract, chart and Telegram.">
+<meta property="og:image" content="https://fumpocoin.xyz/logo.png">
+<meta property="og:url" content="https://fumpocoin.xyz/">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="logo.png">
+<style>
+  :root {
+    --bg: #12081f;
+    --panel: #1d1030;
+    --line: #35204f;
+    --text: #f4eeff;
+    --muted: #b9a8d6;
+    --purple: #a24bff;
+    --lime: #b6ff3c;
+    --ink: #12081f;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background:
+      radial-gradient(900px 500px at 50% -120px, rgba(162, 75, 255, .35), transparent 70%),
+      var(--bg);
+    color: var(--text);
+    font: 17px/1.6 ui-rounded, "SF Pro Rounded", "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--lime); }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 16px; }
+
+  header { text-align: center; padding: 56px 0 40px; }
+  .logo {
+    width: 168px; height: 168px; border-radius: 50%;
+    border: 4px solid var(--lime);
+    box-shadow: 0 0 0 8px rgba(182, 255, 60, .12), 0 20px 60px rgba(162, 75, 255, .45);
+  }
+  h1 {
+    margin: 22px 0 6px; font-size: clamp(44px, 12vw, 84px); line-height: 1;
+    font-weight: 900; letter-spacing: -.02em; color: var(--lime);
+    text-shadow: 0 4px 0 var(--purple);
+  }
+  .tag { margin: 0 auto; max-width: 30em; color: var(--muted); font-size: 19px; text-wrap: balance; }
+
+  .ca {
+    margin: 30px auto 0; max-width: 620px; background: var(--panel);
+    border: 1px solid var(--line); border-radius: 18px; padding: 14px 16px; text-align: left;
+  }
+  .ca small { display: block; color: var(--muted); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; }
+  .ca-row { display: flex; gap: 12px; align-items: center; margin-top: 6px; }
+  .ca code {
+    flex: 1; min-width: 0; overflow-wrap: anywhere;
+    font: 15px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--text);
+  }
+  button.copy {
+    flex: none; border: 0; border-radius: 12px; padding: 10px 16px; cursor: pointer;
+    background: var(--lime); color: var(--ink); font: inherit; font-weight: 800; font-size: 15px;
+  }
+  button.copy:active { transform: translateY(1px); }
+
+  .cta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 22px; }
+  .btn {
+    display: inline-block; padding: 13px 22px; border-radius: 14px; text-decoration: none;
+    font-weight: 800; border: 2px solid var(--purple); color: var(--text); background: transparent;
+  }
+  .btn.primary { background: var(--purple); color: #fff; }
+  .btn:hover { filter: brightness(1.12); }
+
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 36px 0 0; }
+  .stat { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 16px; text-align: center; }
+  .stat b { display: block; font-size: 22px; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+  .stat span { color: var(--muted); font-size: 13px; text-transform: uppercase; letter-spacing: .08em; }
+  .src { text-align: center; color: var(--muted); font-size: 13px; margin: 10px 0 0; }
+
+  section { padding: 48px 0 0; }
+  h2 { font-size: 30px; margin: 0 0 16px; font-weight: 900; }
+  .steps { list-style: none; counter-reset: s; margin: 0; padding: 0; display: grid; gap: 12px; }
+  .steps li {
+    counter-increment: s; background: var(--panel); border: 1px solid var(--line);
+    border-radius: 16px; padding: 16px 16px 16px 64px; position: relative;
+  }
+  .steps li::before {
+    content: counter(s); position: absolute; left: 16px; top: 16px; width: 34px; height: 34px;
+    border-radius: 50%; background: var(--lime); color: var(--ink); font-weight: 900;
+    display: grid; place-items: center;
+  }
+  .steps b { display: block; }
+  .steps p { margin: 2px 0 0; color: var(--muted); }
+
+  .safe { background: var(--panel); border: 1px solid var(--line); border-left: 5px solid var(--lime); border-radius: 16px; padding: 16px 18px; }
+  .safe ul { margin: 8px 0 0; padding-left: 20px; color: var(--muted); }
+
+  footer { margin-top: 56px; padding: 24px 0 40px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; text-align: center; }
+
+  @media (max-width: 560px) {
+    .stats { grid-template-columns: 1fr; }
+    .ca-row { flex-direction: column; align-items: stretch; }
+    .btn { flex: 1 1 100%; text-align: center; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <img class="logo" src="logo.png" alt="FUMPO logo: a purple monster holding a coin" width="168" height="168">
+    <h1>$FUMPO</h1>
+    <p class="tag">The purple monster of Solana. A community memecoin, made for fun.</p>
+
+    <div class="ca">
+      <small>Official contract (Solana)</small>
+      <div class="ca-row">
+        <code id="ca">2ftHKA9A4hcsctZLPDk1qGL7VFqvdHzFUD5pnxvrpump</code>
+        <button class="copy" id="copy" type="button">Copy</button>
+      </div>
+    </div>
+
+    <div class="cta">
+      <a class="btn primary" href="https://pump.fun/coin/2ftHKA9A4hcsctZLPDk1qGL7VFqvdHzFUD5pnxvrpump" target="_blank" rel="noopener">Buy on pump.fun</a>
+      <a class="btn" href="https://dexscreener.com/solana/2ftHKA9A4hcsctZLPDk1qGL7VFqvdHzFUD5pnxvrpump" target="_blank" rel="noopener">Chart</a>
+      <a class="btn" href="https://t.me/fumpo_coin" target="_blank" rel="noopener">Telegram</a>
+      <a class="btn" href="https://x.com/FumpoCoin" target="_blank" rel="noopener">X / Twitter</a>
+    </div>
+
+    <div class="stats" aria-live="polite">
+      <div class="stat"><b id="price">...</b><span>Price</span></div>
+      <div class="stat"><b id="mcap">...</b><span>Market cap</span></div>
+      <div class="stat"><b id="vol">...</b><span>24h volume</span></div>
+    </div>
+    <p class="src">Live data from DexScreener</p>
+  </header>
+
+  <section id="how">
+    <h2>How to buy</h2>
+    <ol class="steps">
+      <li><b>Get a Solana wallet</b><p>Install Phantom or Solflare and save your seed phrase offline. Never share it with anyone.</p></li>
+      <li><b>Add some SOL</b><p>Buy SOL on an exchange and send it to your wallet address.</p></li>
+      <li><b>Paste the contract</b><p>Open pump.fun, paste the contract address from this page and check that it matches exactly.</p></li>
+      <li><b>Swap SOL for FUMPO</b><p>Choose the amount, confirm in your wallet and you are part of the fam.</p></li>
+    </ol>
+  </section>
+
+  <section id="safety">
+    <h2>Stay safe</h2>
+    <div class="safe">
+      <b>The team will never DM you first.</b>
+      <ul>
+        <li>Nobody from FUMPO will ask for your seed phrase, private key or money.</li>
+        <li>Use only the contract address shown on this page and by the bot in the official Telegram.</li>
+        <li>Anyone offering "support", "listings" or "volume" in private messages is a scammer.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <p>$FUMPO is a memecoin with no intrinsic value and no expectation of financial return. Crypto is high risk: you can lose everything you put in. Nothing on this site is financial advice.</p>
+    <p>&copy; 2026 FUMPO community</p>
+  </footer>
+</div>
+
+<script>
+  const CA = "2ftHKA9A4hcsctZLPDk1qGL7VFqvdHzFUD5pnxvrpump";
+  const copyBtn = document.getElementById("copy");
+  copyBtn.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(CA);
+    } catch {
+      const r = document.createRange();
+      r.selectNodeContents(document.getElementById("ca"));
+      const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r);
+      document.execCommand("copy");
+    }
+    copyBtn.textContent = "Copied!";
+    setTimeout(() => (copyBtn.textContent = "Copy"), 1500);
+  });
+
+  const usd = (x) => x >= 1e6 ? "$" + (x / 1e6).toFixed(2) + "M" : x >= 1e3 ? "$" + (x / 1e3).toFixed(1) + "K" : "$" + x.toFixed(2);
+  const price = (x) => x < 0.01 ? "$" + x.toFixed(10).replace(/0+$/, "") : "$" + x.toFixed(4);
+  const set = (id, v) => (document.getElementById(id).textContent = v);
+
+  async function load() {
+    try {
+      const r = await fetch("https://api.dexscreener.com/latest/dex/tokens/" + CA);
+      const pairs = (await r.json()).pairs || [];
+      if (!pairs.length) throw new Error("no pairs");
+      const p = pairs.sort((a, b) => ((b.liquidity || {}).usd || 0) - ((a.liquidity || {}).usd || 0))[0];
+      set("price", price(Number(p.priceUsd || 0)));
+      set("mcap", usd(Number(p.marketCap || p.fdv || 0)));
+      set("vol", usd(Number((p.volume || {}).h24 || 0)));
+    } catch {
+      ["price", "mcap", "vol"].forEach((id) => set(id, "n/a"));
+    }
+  }
+  load();
+  setInterval(load, 30000);
+</script>
+</body>
+</html>
