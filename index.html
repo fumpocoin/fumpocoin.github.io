@@ -124,6 +124,20 @@
   .kit img { width: 100%; height: 150px; object-fit: cover; border-radius: 10px; }
   .kit figcaption { display: flex; justify-content: space-between; align-items: center; gap: 8px; color: var(--muted); font-size: 14px; margin-top: auto; }
   .kit a { font-weight: 800; text-decoration: none; }
+  .phases { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .phases li { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 18px; }
+  .phases li.now { border-color: var(--lime); }
+  .phase-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+  .phase-n { color: var(--muted); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; }
+  .chip { font-size: 12px; font-weight: 800; padding: 3px 10px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); white-space: nowrap; }
+  .chip.done { background: var(--purple); border-color: var(--purple); color: #fff; }
+  .chip.live { background: var(--lime); border-color: var(--lime); color: var(--ink); }
+  .phases h3 { margin: 8px 0 6px; font-size: 20px; font-weight: 900; line-height: 1.2; text-transform: uppercase; }
+  .phases p { margin: 0; color: var(--muted); }
+  .miles { margin-top: 12px; background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 18px; }
+  .miles h3 { margin: 0 0 10px; font-size: 18px; font-weight: 900; }
+  .miles ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .miles li { border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; color: var(--text); font-size: 15px; }
   .members { color: var(--muted); font-size: 14px; margin: 12px 0 0; min-height: 1.6em; }
 
   @media (max-width: 760px) { .stats { grid-template-columns: repeat(2, 1fr); } }
@@ -132,6 +146,7 @@
     .logo { width: 96px; height: 96px; margin-top: -24px; }
     .chart iframe { height: 440px; }
     .kit { grid-template-columns: 1fr; }
+    .phases { grid-template-columns: 1fr; }
     .ca-row { flex-direction: column; align-items: stretch; }
     .btn { flex: 1 1 100%; text-align: center; }
   }
@@ -181,7 +196,41 @@
   <section id="about" class="prose">
     <h2>About FUMPO</h2>
     <p><b>FUMPO is a meme coin.</b> It was launched on pump.fun on Solana, with the standard pump.fun supply of 1 billion tokens and no presale. It exists for the memes and the community around them.</p>
-    <p><b>What it is not:</b> an investment product, a company, or a promise of profit. There is no roadmap that guarantees anything and no utility you need to wait for. If the purple monster makes you laugh, you already got the product.</p>
+    <p><b>What it is not:</b> an investment product, a company, or a promise of profit. There are no guarantees and no utility you need to wait for. If the purple monster makes you laugh, you already got the product.</p>
+  </section>
+
+  <section id="roadmap">
+    <h2>Roadmap</h2>
+    <ol class="phases">
+      <li>
+        <div class="phase-top"><span class="phase-n">Phase 1</span><span class="chip done">Done</span></div>
+        <h3>FUMPO is born</h3>
+        <p>Token launch, official website, Telegram community with a guard bot against scams, and the X profile.</p>
+      </li>
+      <li class="now">
+        <div class="phase-top"><span class="phase-n">Phase 2</span><span class="chip live">Happening now</span></div>
+        <h3>Feed the monster</h3>
+        <p>The Feed FUMPO game in Telegram, with levels, a weekly leaderboard and new challenges for the community.</p>
+      </li>
+      <li>
+        <div class="phase-top"><span class="phase-n">Phase 3</span><span class="chip">Next</span></div>
+        <h3>FUMPO takes over the internet</h3>
+        <p>The monster comes alive on X, with memes and videos made by the community and collabs with other creators.</p>
+      </li>
+      <li>
+        <div class="phase-top"><span class="phase-n">Phase 4</span><span class="chip">Later</span></div>
+        <h3>The FUMPO universe</h3>
+        <p>New games and characters, and merch if the community really wants it.</p>
+      </li>
+    </ol>
+    <div class="miles">
+      <h3>Milestones</h3>
+      <ul>
+        <li>Bonding curve completed</li>
+        <li>Move to PumpSwap</li>
+        <li>DexScreener profile</li>
+      </ul>
+    </div>
   </section>
 
   <section id="how">
