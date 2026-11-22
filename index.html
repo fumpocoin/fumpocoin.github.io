@@ -150,6 +150,8 @@
   .play img { width: 100%; border-radius: 12px; display: block; aspect-ratio: 3 / 1; object-fit: cover; }
   .play h3 { margin: 0 0 6px; font-size: 24px; font-weight: 900; }
   .play p { margin: 0 0 14px; color: var(--muted); }
+  .spread { text-align: center; background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 22px 18px; }
+  .spread p { margin: 0 auto 16px; color: var(--muted); max-width: 46ch; }
   .members { color: var(--muted); font-size: 14px; margin: 12px 0 0; min-height: 1.6em; }
 
   @media (max-width: 760px) { .stats { grid-template-columns: repeat(2, 1fr); } }
@@ -312,6 +314,18 @@
     </div>
   </section>
 
+  <section id="share">
+    <h2>Spread the word</h2>
+    <div class="spread">
+      <p>Like the monster? One tap opens a ready post that you can edit before sending.</p>
+      <div class="cta" style="margin-top:0">
+        <a class="btn primary" href="https://twitter.com/intent/tweet?text=Meet%20%24FUMPO%2C%20the%20purple%20meme%20monster%20on%20Solana%20%F0%9F%91%BE%20Zero%20brain%20cells%2C%20pure%20meme%20energy.%20%40FumpoCoin&amp;url=https%3A%2F%2Ffumpocoin.xyz" target="_blank" rel="noopener">Post on X</a>
+        <a class="btn" href="https://t.me/share/url?url=https%3A%2F%2Ffumpocoin.xyz&amp;text=Meet%20%24FUMPO%2C%20the%20purple%20meme%20monster%20on%20Solana%20%F0%9F%91%BE%20Zero%20brain%20cells%2C%20pure%20meme%20energy.%20%40FumpoCoin" target="_blank" rel="noopener">Send on Telegram</a>
+        <button class="btn" id="copy-link" type="button" style="font:inherit;font-weight:800;cursor:pointer">Copy link</button>
+      </div>
+    </div>
+  </section>
+
   <section id="faq">
     <h2>FAQ</h2>
     <details><summary>Where can I buy FUMPO?</summary><p>On pump.fun, using the contract address at the top of this page. Always paste the address yourself instead of searching by name, because copycat tokens use the same name.</p></details>
@@ -356,6 +370,13 @@
     }
     copyBtn.textContent = "Copied!";
     setTimeout(() => (copyBtn.textContent = "Copy"), 1500);
+  });
+
+  const linkBtn = document.getElementById("copy-link");
+  linkBtn.addEventListener("click", async () => {
+    try { await navigator.clipboard.writeText("https://fumpocoin.xyz"); linkBtn.textContent = "Link copied!"; }
+    catch { linkBtn.textContent = "fumpocoin.xyz"; }
+    setTimeout(() => (linkBtn.textContent = "Copy link"), 1500);
   });
 
   const usd = (x) => x >= 1e6 ? "$" + (x / 1e6).toFixed(2) + "M" : x >= 1e3 ? "$" + (x / 1e3).toFixed(1) + "K" : "$" + x.toFixed(2);
