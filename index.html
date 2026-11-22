@@ -134,6 +134,11 @@
   .chip.live { background: var(--lime); border-color: var(--lime); color: var(--ink); }
   .phases h3 { margin: 8px 0 6px; font-size: 20px; font-weight: 900; line-height: 1.2; text-transform: uppercase; }
   .phases p { margin: 0; color: var(--muted); }
+  .ticks { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 6px; font-size: 15px; }
+  .ticks li { background: none; border: 0; border-radius: 0; padding: 0 0 0 26px; position: relative; color: var(--text); }
+  .ticks li::before { content: "\2713"; position: absolute; left: 0; top: 0; color: var(--lime); font-weight: 900; }
+  .ticks li.todo { color: var(--muted); }
+  .ticks li.todo::before { content: "\25CB"; color: var(--muted); }
   .miles { margin-top: 12px; background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 18px; }
   .miles h3 { margin: 0 0 10px; font-size: 18px; font-weight: 900; }
   .miles ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
@@ -218,12 +223,29 @@
       <li>
         <div class="phase-top"><span class="phase-n">Phase 1</span><span class="chip done">Done</span></div>
         <h3>FUMPO is born</h3>
-        <p>Token launch, official website, Telegram community with a guard bot against scams, and the X profile.</p>
+        <p>The monster hatches and gets a home on the internet.</p>
+        <ul class="ticks">
+          <li>Token launched on pump.fun</li>
+          <li>Website with live price and market cap</li>
+          <li>Swap box on the site, powered by Jupiter</li>
+          <li>FAQ, media kit and this roadmap</li>
+          <li>Official Telegram community</li>
+          <li>Guard bot: captcha and anti-scam filter</li>
+          <li>Buy alerts and market cap milestones in Telegram</li>
+          <li>Daily recap and safety reminders</li>
+          <li>Official X profile</li>
+        </ul>
       </li>
       <li class="now">
         <div class="phase-top"><span class="phase-n">Phase 2</span><span class="chip live">Happening now</span></div>
         <h3>Feed the monster</h3>
-        <p>The Feed FUMPO game in Telegram, with levels, a weekly leaderboard and new challenges for the community.</p>
+        <p>Games and things to do with the monster every day.</p>
+        <ul class="ticks">
+          <li>Feed FUMPO mini game in Telegram</li>
+          <li>Levels, streaks and a weekly leaderboard</li>
+          <li class="todo">Ask FUMPO: the monster answers questions</li>
+          <li class="todo">A full arcade game</li>
+        </ul>
       </li>
       <li>
         <div class="phase-top"><span class="phase-n">Phase 3</span><span class="chip">Next</span></div>
