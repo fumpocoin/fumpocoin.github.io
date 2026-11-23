@@ -4,109 +4,83 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <meta name="robots" content="noindex">
-<title>FUMPO: The Pizza Incident (prototype)</title>
+<title>FUMPO: Moon Meadow</title>
 <link rel="icon" href="../logo.png">
 <style>
-  :root { --bg: #12081f; --panel: rgba(18, 8, 31, .82); --line: #35204f; --text: #f4eeff; --muted: #b9a8d6; --purple: #a24bff; --lime: #b6ff3c; --ink: #12081f; }
+  :root { --panel: rgba(18, 8, 31, .78); --line: #4a2f73; --text: #f4eeff; --muted: #c9b8e6; --purple: #a24bff; --lime: #b6ff3c; --ink: #12081f; }
   * { box-sizing: border-box; }
-  html, body { margin: 0; height: 100%; background: var(--bg); color: var(--text); overflow: hidden; overscroll-behavior: none; }
+  html, body { margin: 0; height: 100%; background: #0d0420; color: var(--text); overflow: hidden; overscroll-behavior: none; }
   body { font: 15px/1.45 ui-rounded, "SF Pro Rounded", "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif; -webkit-font-smoothing: antialiased; user-select: none; -webkit-user-select: none; touch-action: none; }
   canvas { position: fixed; inset: 0; width: 100%; height: 100%; display: block; }
-  .hud { position: fixed; left: 0; right: 0; top: 0; padding: calc(10px + env(safe-area-inset-top)) 12px 0; display: flex; gap: 10px; align-items: flex-start; pointer-events: none; }
-  .box { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 8px 12px; }
-  .obj small, .meters small { display: block; color: var(--muted); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; }
-  .obj b { font-size: 16px; }
-  .meters { margin-left: auto; min-width: 150px; }
-  .stars { font-size: 18px; letter-spacing: 2px; color: #6b5a8a; }
-  .stars.hot { color: #ffd23c; text-shadow: 0 0 10px rgba(255, 210, 60, .6); }
-  .bar { height: 8px; border-radius: 99px; background: #2a1a44; overflow: hidden; margin: 3px 0 6px; }
-  .bar i { display: block; height: 100%; width: 100%; background: var(--lime); border-radius: 99px; }
-  #heat { background: #ff8a3c; }
-  .row { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
-  .top-btns { position: fixed; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom)); display: flex; gap: 8px; }
-  body.touch .top-btns { bottom: auto; top: calc(96px + env(safe-area-inset-top)); }
-  button { font: inherit; }
-  .small { border: 1px solid var(--line); background: var(--panel); color: var(--text); border-radius: 10px; padding: 7px 11px; font-size: 13px; cursor: pointer; }
-  .keys { position: fixed; left: 12px; bottom: calc(12px + env(safe-area-inset-bottom)); color: var(--muted); font-size: 13px; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 6px 10px; }
-  body.touch .keys { display: none; }
-  .toast { position: fixed; left: 50%; top: 22%; transform: translateX(-50%); max-width: min(90vw, 460px); text-align: center; font-weight: 800; font-size: 17px; background: var(--panel); border: 1px solid var(--lime); border-radius: 14px; padding: 10px 16px; pointer-events: none; }
   [hidden] { display: none !important; }
-
-  /* touch controls */
-  #pad { position: fixed; left: 0; top: 0; bottom: 0; width: 55%; display: none; }
-  .tbtn { position: fixed; display: none; width: 84px; height: 84px; border-radius: 50%; border: 2px solid var(--purple); background: rgba(162, 75, 255, .25); color: var(--text); font-weight: 900; font-size: 14px; }
-  #btn-action { right: 22px; bottom: calc(34px + env(safe-area-inset-bottom)); }
-  #btn-action.ready { background: var(--lime); border-color: var(--lime); color: var(--ink); }
-  #btn-brake { right: 122px; bottom: calc(22px + env(safe-area-inset-bottom)); width: 72px; height: 72px; border-color: #ff4d6d; background: rgba(255, 77, 109, .25); }
-  body.touch #pad, body.touch .tbtn { display: block; }
-  #stick { position: fixed; width: 110px; height: 110px; margin: -55px 0 0 -55px; border-radius: 50%; border: 2px solid rgba(255, 255, 255, .35); background: rgba(255, 255, 255, .06); pointer-events: none; }
-  #knob { position: absolute; left: 50%; top: 50%; width: 48px; height: 48px; margin: -24px 0 0 -24px; border-radius: 50%; background: rgba(182, 255, 60, .85); }
-
-  .overlay { position: fixed; inset: 0; display: grid; place-items: center; background: rgba(11, 4, 22, .78); padding: 18px; text-align: center; }
-  .card { max-width: 440px; background: #1d1030; border: 1px solid var(--line); border-radius: 20px; padding: 24px 22px; }
-  .card h1 { margin: 0 0 4px; font-size: clamp(26px, 6vw, 36px); line-height: 1.05; color: var(--lime); text-shadow: 0 3px 0 var(--purple); font-weight: 900; }
-  .card .tag { color: var(--muted); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; margin: 0 0 12px; }
-  .card p { color: var(--muted); margin: 0 0 14px; }
-  .card ol { text-align: left; color: var(--text); margin: 0 0 16px; padding-left: 22px; }
-  .card li { margin-bottom: 4px; }
+  button { font: inherit; }
+  .hud { position: fixed; left: 0; right: 0; top: 0; padding: calc(10px + env(safe-area-inset-top)) 12px 0; display: flex; gap: 8px; align-items: center; pointer-events: none; }
+  .pill { background: var(--panel); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-weight: 900; font-variant-numeric: tabular-nums; }
+  #hearts { color: #ff4d6d; font-size: 20px; letter-spacing: 2px; }
+  .coin { display: inline-block; width: 16px; height: 16px; border-radius: 50%; background: #ffd23c; border: 2px solid #a8741a; vertical-align: -2px; margin-right: 6px; }
+  .track { flex: 1; max-width: 260px; height: 8px; border-radius: 99px; background: rgba(255, 255, 255, .15); overflow: hidden; margin: 0 4px; }
+  .track i { display: block; height: 100%; width: 0; background: var(--lime); border-radius: 99px; }
+  .hud .sp { flex: 1; }
+  .small { pointer-events: auto; border: 1px solid var(--line); background: var(--panel); color: var(--text); border-radius: 999px; padding: 6px 12px; font-size: 13px; cursor: pointer; }
+  .tbtn { position: fixed; display: none; bottom: calc(26px + env(safe-area-inset-bottom)); width: 78px; height: 78px; border-radius: 50%; border: 2px solid rgba(255, 255, 255, .45); background: rgba(255, 255, 255, .12); color: #fff; font-size: 30px; font-weight: 900; }
+  .tbtn.on { background: rgba(182, 255, 60, .55); border-color: var(--lime); }
+  #t-left { left: 18px; } #t-right { left: 108px; }
+  #t-jump { right: 20px; width: 96px; height: 96px; border-color: var(--lime); font-size: 16px; }
+  body.touch .tbtn { display: block; }
+  .overlay { position: fixed; inset: 0; display: grid; place-items: center; padding: 18px; text-align: center; background: rgba(13, 4, 32, .55); }
+  #title { background: none; align-items: start; justify-items: end; padding: 16vh 7vw 0 0; }
+  #title .card { text-align: center; }
+  @media (max-width: 700px) { #title { justify-items: center; padding: 11vh 16px 0; } }
+  .card { max-width: 440px; }
+  .card.box { background: #1d1030; border: 1px solid var(--line); border-radius: 22px; padding: 26px 24px; }
+  h1 { margin: 0 0 6px; font-size: clamp(34px, 9vw, 64px); line-height: 1; color: var(--lime); text-shadow: 0 4px 0 var(--purple), 0 10px 30px rgba(0, 0, 0, .5); font-weight: 900; letter-spacing: -.02em; }
+  .card p { color: var(--muted); margin: 0 0 16px; font-size: 16px; }
   .btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
-  .b { border: 2px solid var(--purple); background: transparent; color: var(--text); border-radius: 14px; padding: 11px 20px; font-weight: 800; cursor: pointer; text-decoration: none; }
-  .b.primary { background: var(--lime); border-color: var(--lime); color: var(--ink); }
-  .note { font-size: 12px; color: var(--muted); margin: 14px 0 0; }
+  .b { border: 2px solid var(--purple); background: rgba(18, 8, 31, .6); color: var(--text); border-radius: 16px; padding: 12px 24px; font-weight: 900; cursor: pointer; text-decoration: none; font-size: 17px; }
+  .b.primary { background: var(--lime); border-color: var(--lime); color: var(--ink); box-shadow: 0 6px 0 #6fa30f; }
+  .b.primary:active { transform: translateY(3px); box-shadow: 0 3px 0 #6fa30f; }
+  .stars { font-size: 44px; color: #ffd23c; letter-spacing: 6px; text-shadow: 0 0 18px rgba(255, 210, 60, .5); margin: 4px 0 8px; }
+  .note { font-size: 13px !important; margin-top: 14px !important; }
 </style>
 </head>
 <body>
 <canvas id="c"></canvas>
-<div id="pad"></div>
-<div id="stick" hidden><div id="knob"></div></div>
 
 <div class="hud">
-  <div class="box obj"><small>Objective</small><b id="objective">Get in the car</b></div>
-  <div class="box meters">
-    <div class="row"><small>Wanted</small><span class="stars" id="stars">☆☆☆☆☆</span></div>
-    <small>Car</small><div class="bar"><i id="car"></i></div>
-    <div id="heat-row" hidden><div class="row"><small>Pizza heat</small><small id="heat-s">120s</small></div><div class="bar"><i id="heat"></i></div></div>
-  </div>
-</div>
-<div class="toast" id="toast" hidden></div>
-<div class="keys" id="keys"></div>
-<div class="top-btns">
+  <span class="pill" id="hearts">♥♥♥</span>
+  <span class="pill"><i class="coin"></i><span id="coins">0</span></span>
+  <div class="track"><i id="progress"></i></div>
+  <span class="sp"></span>
   <button class="small" id="btn-mute" type="button">Sound on</button>
   <button class="small" id="btn-pause" type="button">Pause</button>
 </div>
-<button class="tbtn" id="btn-brake" type="button" hidden>BRAKE</button>
-<button class="tbtn" id="btn-action" type="button">ENTER</button>
 
-<div class="overlay" id="brief">
+<button class="tbtn" id="t-left" type="button" aria-label="Move left">&#9664;</button>
+<button class="tbtn" id="t-right" type="button" aria-label="Move right">&#9654;</button>
+<button class="tbtn" id="t-jump" type="button">JUMP</button>
+
+<div class="overlay" id="title">
   <div class="card">
-    <p class="tag">Prototype · Mission 1</p>
-    <h1>The Pizza Incident</h1>
-    <p>FUMPO is starving and the pizzeria is across town. What could go wrong?</p>
-    <ol>
-      <li>Get in the yellow car.</li>
-      <li>Drive to the pizzeria.</li>
-      <li>Lose the cops, then bring the pizza home before it goes cold.</li>
-    </ol>
-    <div class="btns"><button class="b primary" id="btn-start" type="button">Start</button></div>
-    <p class="note">Keyboard: WASD or arrows, E to enter or exit, Space to brake, P to pause. Phone: stick on the left, buttons on the right. Early test build with placeholder art.</p>
+    <h1>FUMPO</h1>
+    <p>Moon Meadow · Level 1<br>Grab the coins, stomp the FUD, reach the rocket.</p>
+    <div class="btns"><button class="b primary" id="btn-start" type="button">Play</button></div>
+    <p class="note">Arrows or A/D to run · Space to jump<br>Jump again in the air for a double jump</p>
   </div>
 </div>
 <div class="overlay" id="pause" hidden>
-  <div class="card">
-    <h1>Paused</h1>
-    <p>The pizza is not getting any warmer.</p>
-    <div class="btns"><button class="b primary" id="btn-resume" type="button">Resume</button><button class="b" id="btn-restart" type="button">Restart</button></div>
-  </div>
+  <div class="card box"><h1>Paused</h1><p>FUMPO is catching his breath.</p>
+    <div class="btns"><button class="b primary" id="btn-resume" type="button">Resume</button><button class="b" id="btn-restart" type="button">Restart</button></div></div>
 </div>
-<div class="overlay" id="end" hidden>
-  <div class="card">
-    <h1 id="end-title">Busted!</h1>
-    <p id="end-sub"></p>
-    <div class="btns"><button class="b primary" id="btn-again" type="button">Play again</button><a class="b" href="../">Back to site</a></div>
-  </div>
+<div class="overlay" id="over" hidden>
+  <div class="card box"><h1>Ouch!</h1><p>The FUD got you this time.</p>
+    <div class="btns"><button class="b primary" id="btn-retry" type="button">Try again</button><a class="b" href="../">Back to site</a></div></div>
+</div>
+<div class="overlay" id="win" hidden>
+  <div class="card box"><h1>To the moon!</h1><div class="stars" id="win-stars">★★★</div><p id="win-sub"></p>
+    <div class="btns"><button class="b primary" id="btn-again" type="button">Play again</button><a class="b" href="../">Back to site</a></div></div>
 </div>
 
-<script type="module" src="src/main.js"></script>
+<script type="module" src="src/game.js"></script>
 <script data-goatcounter="https://fumpcoin.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>
